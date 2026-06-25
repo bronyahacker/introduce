@@ -25,8 +25,8 @@ export function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 md:px-6 py-20">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-20">
+        <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12 lg:gap-20">
           {/* Left: Hero Card */}
           <ScrollReveal variant="fade-left" className="flex-shrink-0">
             <TiltCard maxTilt={10}>
@@ -55,19 +55,19 @@ export function Hero() {
                   {siteConfig.author.role}
                 </p>
 
-                <div className="flex gap-3 justify-center">
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Link
                     href="/blog"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[var(--electric-violet)] to-[var(--cyano)] text-white font-medium text-sm hover:shadow-lg hover:shadow-[var(--electric-violet)]/25 transition-shadow"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-[var(--electric-violet)] to-[var(--cyano)] text-white font-medium text-sm hover:shadow-lg hover:shadow-[var(--electric-violet)]/25 transition-shadow"
                   >
-                    Read Blog
+                    Blog
                     <span aria-hidden="true">&rarr;</span>
                   </Link>
                   <Link
                     href="/about"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass text-[var(--starlight)] font-medium text-sm hover:bg-[var(--muted)] transition-colors"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full glass text-[var(--starlight)] font-medium text-sm hover:bg-[var(--muted)] transition-colors"
                   >
-                    About Me
+                    About
                   </Link>
                 </div>
               </div>
