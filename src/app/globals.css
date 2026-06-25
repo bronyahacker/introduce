@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+/* ======== Nebula Glass Design Tokens ======== */
+:root {
+  --deep-cosmos: #080614;
+  --void-purple: #13102B;
+  --electric-violet: #8B5CF6;
+  --cyano: #06B6D4;
+  --starlight: #F5F3FF;
+  --nebula-rose: #F472B6;
+  --background: #080614;
+  --foreground: #F5F3FF;
+  --card: rgba(19, 16, 43, 0.6);
+  --card-foreground: #F5F3FF;
+  --primary: #8B5CF6;
+  --primary-foreground: #FFFFFF;
+  --secondary: #13102B;
+  --secondary-foreground: #F5F3FF;
+  --accent: #06B6D4;
+  --accent-foreground: #080614;
+  --muted: rgba(245, 243, 255, 0.08);
+  --muted-foreground: rgba(245, 243, 255, 0.5);
+  --border: rgba(139, 92, 246, 0.12);
+  --ring: rgba(139, 92, 246, 0.4);
+  --destructive: #EF4444;
+  --radius: 0.75rem;
+}
+
+/* ======== Light Mode Overrides ======== */
+.light {
+  --deep-cosmos: #F8F7FF;
+  --void-purple: #FFFFFF;
+  --starlight: #0F0A24;
+  --background: #F8F7FF;
+  --foreground: #0F0A24;
+  --card: rgba(255, 255, 255, 0.7);
+  --card-foreground: #0F0A24;
+  --primary: #7C3AED;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F0EDFF;
+  --secondary-foreground: #0F0A24;
+  --accent: #0891B2;
+  --accent-foreground: #FFFFFF;
+  --muted: rgba(15, 10, 36, 0.05);
+  --muted-foreground: rgba(15, 10, 36, 0.5);
+  --border: rgba(124, 58, 237, 0.15);
+  --ring: rgba(124, 58, 237, 0.4);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ======== Glass Morphism Utilities ======== */
+.glass {
+  background: rgba(19, 16, 43, 0.4);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.light .glass {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(124, 58, 237, 0.10);
+  box-shadow:
+    0 8px 32px rgba(124, 58, 237, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.glass-strong {
+  background: rgba(19, 16, 43, 0.7);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+}
+
+.light .glass-strong {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(124, 58, 237, 0.12);
+}
+
+/* ======== Animated Gradient Text ======== */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--electric-violet) 0%,
+    var(--cyano) 50%,
+    var(--nebula-rose) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    var(--electric-violet),
+    var(--cyano),
+    var(--nebula-rose),
+    var(--electric-violet)
+  );
+  background-size: 300% 300%;
+  animation: gradient-shift 6s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ======== Keyframes ======== */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.6), 0 0 60px rgba(6, 182, 212, 0.3); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+/* ======== Base Styles ======== */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition: background-color 0.5s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}
+
+/* ======== Prose Overrides for Blog Content ======== */
+.prose {
+  --tw-prose-body: var(--foreground);
+  --tw-prose-headings: var(--starlight);
+  --tw-prose-links: var(--electric-violet);
+  --tw-prose-bold: var(--starlight);
+  --tw-prose-code: var(--cyano);
+  --tw-prose-pre-bg: rgba(19, 16, 43, 0.8);
+  --tw-prose-quotes: var(--muted-foreground);
+  --tw-prose-quote-borders: var(--electric-violet);
+}
+
+/* ======== Reduced Motion ======== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
